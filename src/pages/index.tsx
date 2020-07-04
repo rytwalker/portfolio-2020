@@ -1,7 +1,9 @@
+import Hero from "../components/Hero/Hero"
+
 function Index() {
   return (
     <main>
-      <h1>Ryan Walker</h1>
+      <Hero />
     </main>
   )
 }

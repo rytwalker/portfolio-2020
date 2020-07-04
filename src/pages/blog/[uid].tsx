@@ -9,7 +9,6 @@ interface previewData {
 
 function BlogPost({ post }) {
   if (post && post.data) {
-    console.log(post.data)
     // const hasSeoTitle = RichText.asText(post.data.seo_title).length !== 0
     const seoTitle = post.data.seo_title || "BLOG"
     const seoDescription = post.data.seo_description || "Default Description"
