@@ -1,26 +1,48 @@
-version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+defaults: &defaults
+  docker:
+    - image: circleci/node:8.10.0
+  working_directory: ~/tmp/circlci-now
+
+version: 2
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  checkout:
+    <<: *defaults
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-  deploy:
-    steps:
+      - attach_workspace:
+          at: ~/tmp/circlci-now
+      - restore_cache:
+          keys:
+            - npm-cache-{{ .Branch }}-{{ checksum "package.json" }}
+            - npm-cache-{{ .Branch }}
+            - npm-cache-
       - run:
-        name: Install Now CLI
-        command: yarn global add now
+          name: NPM Install
+          command: npm install
+      - save_cache:
+          key: npm-cache-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths: .
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tmp/circlci-now
+      - run:
+          name: Install Now CLI
+          command: sudo npm install --global --unsafe-perm now
       - deploy:
-          name: Deploy
-          command: now -t $NOW_TOKEN --prod
+          name: Deploy & Alias
+          command: now --token $NOW_TOKEN --prod
 
 workflows:
-  build-and-test:
+  version: 2
+  test-deploy-purge:
     jobs:
-      - build-and-test
-      - deploy
+      - checkout
+      - deploy:
+          requires:
+            - checkout
