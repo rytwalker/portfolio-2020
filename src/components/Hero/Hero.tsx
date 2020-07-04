@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 function Hero() {
   return (
-    <StyledHero>
+    <StyledHero id="hero">
       <h1>Ryan Walker</h1>
     </StyledHero>
   )
