@@ -2,10 +2,9 @@ import Head from "next/head"
 import { RichText } from "prismic-reactjs"
 import { queryRepeatableDocuments } from "../../utils/queries"
 import { Client } from "../../utils/prismic-configuration"
-import { totalmem } from "os"
 
 interface previewData {
-  ref?: any
+  ref?: string | null
 }
 
 function BlogPost({ post }) {
