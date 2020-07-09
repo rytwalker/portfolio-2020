@@ -1,6 +1,6 @@
 // import styled from "styled-components"
 
-import PageLayout from "../components/Layout/PageLayout"
+import PageLayout from "../../components/Layout/PageLayout"
 
 function Projects() {
   return (

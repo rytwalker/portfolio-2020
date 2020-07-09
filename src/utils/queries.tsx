@@ -21,3 +21,7 @@ export const homePageQuery = async () => {
   const allRoutes = await fetchDocs()
   return allRoutes.filter((doc) => doc.type === "post").slice(0, 5)
 }
+
+export const queryByUID = async (docType: string, uid: string, ref = null) => {
+  return await Client().getByUID(docType, uid, ref ? { ref } : null || {})
+}
