@@ -14,8 +14,8 @@ function Carousel({ slice }) {
   })
   return (
     <StyledCarousel>
-      <LeftButton>{"<"}</LeftButton>
-      <Slider x={x as any}>
+      {/* <LeftButton>{"<"}</LeftButton> */}
+      <Slider>
         {slice.items.map((image, index) => (
           <CarouselImage
             src={image.carousel_image.url}
@@ -24,7 +24,7 @@ function Carousel({ slice }) {
           />
         ))}
       </Slider>
-      <RightButton onClick={() => setToggle(!toggle)}>{">"}</RightButton>
+      {/* <RightButton onClick={() => setToggle(!toggle)}>{">"}</RightButton> */}
     </StyledCarousel>
   )
 }
@@ -48,7 +48,6 @@ const Slider = styled(animated.div)`
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  transform: ${({ x }: any) => x.interpolate((x) => `translate3d(0,${x}px,0)`)};
 `
 
 const CarouselButton = styled.button`

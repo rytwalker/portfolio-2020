@@ -41,6 +41,7 @@ const StyledNav = styled.nav`
   top: 0;
   left: 0;
   background: #69d7ef;
+  z-index: 1000;
 `
 
 const NavList = styled.ul`

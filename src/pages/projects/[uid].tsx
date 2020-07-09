@@ -1,4 +1,5 @@
 import Head from "next/head"
+import styled from "styled-components"
 import { RichText } from "prismic-reactjs"
 import { queryRepeatableDocuments, queryByUID } from "../../utils/queries"
 import { linkResolver, PrismicLink } from "../../utils/prismicHelpers"
@@ -37,13 +38,15 @@ function Project({ post }) {
           <meta name="description" content={seoDescription} />
         </Head>
         <PageLayout>
-          <h2>{title}</h2>
+          <StyledHeading>{title}</StyledHeading>
           <SliceZone sliceZone={post.data.body} />
-          <RichText
-            render={post.data.description}
-            linkResolver={linkResolver}
-            serializeHyperlink={PrismicLink}
-          />
+          <Body>
+            <RichText
+              render={post.data.description}
+              linkResolver={linkResolver}
+              serializeHyperlink={PrismicLink}
+            />
+          </Body>
         </PageLayout>
       </>
     )
@@ -51,6 +54,17 @@ function Project({ post }) {
 
   return null
 }
+
+const StyledHeading = styled.h1`
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+`
+
+const Body = styled.div`
+  font-size: 1.2rem;
+  line-height: 32px;
+`
 
 export async function getStaticProps({
   params,
