@@ -51,6 +51,8 @@ const StyledHero = styled.header`
     justify-content: center;
     position: relative;
     overflow: hidden;
+    padding: 0 24px;
+
   }
 `
 

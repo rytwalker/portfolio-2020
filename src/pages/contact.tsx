@@ -1,21 +1,38 @@
-// import styled from "styled-components"
+import styled from "styled-components"
 
-import PageLayout from "../components/Layout/PageLayout"
+import SplitPageLayout from "../components/Layout/SplitPageLayout"
+import ContactForm from "../components/Form/ContactForm"
 
 function Contact() {
   return (
-    <PageLayout>
-      <h1>Contact</h1>
-      <p>
-        My name is Ryan Walker and I am a full-stack developer from Youngstown,
-        Ohio. Learning how to code started out as a hobby for me, but I grew
-        obsessed with building things that required both creativity and logic.
-        Right now I am currently enrolled at Lambda School where I spend 40+
-        hours a week learning the latest web development trends and fundamental
-        computer science skills to bring my projects to life.
-      </p>
-    </PageLayout>
+    <SplitPageLayout>
+      <ColumnForm>
+        <ContactForm />
+      </ColumnForm>
+      <ColumnColor>
+        <h1>Contact</h1>
+        <p>
+          I am searching for a role where I can use my development skills to
+          make amazing things for the world. Let’s talk!
+        </p>
+      </ColumnColor>
+    </SplitPageLayout>
   )
 }
+
+const Column = styled.div`
+  padding: 144px;
+`
+
+const ColumnColor = styled(Column)`
+  background: #eee;
+`
+
+const ColumnForm = styled(Column)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`
 
 export default Contact
