@@ -14,10 +14,14 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  html {
+    font-size: 62.5%;
+  }
+
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.textColor};
-    font-size: ${({ theme }) => theme.typeScale.paragraph};
+    font-size: 1.6rem;
     margin: 0;
     padding: 0;
     font-family: ${({ theme }) => theme.primaryFont};

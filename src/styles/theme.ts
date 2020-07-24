@@ -1,6 +1,6 @@
 import { red, neutral } from "./colors"
-import { primaryFont, typeScale } from "./typography"
-import {above, below} from './breakpoints'
+import { primaryFont, typeScale, headingFont } from "./typography"
+import { above, below } from "./breakpoints"
 
 export const light = {
   body: "#fafafa",
@@ -34,6 +34,7 @@ const redThemeColors = {
 
 const defaultTheme = {
   primaryFont,
+  headingFont,
   typeScale,
   colors: {
     primary: "#69d7ef",

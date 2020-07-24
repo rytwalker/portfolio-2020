@@ -10,7 +10,7 @@ function CTASection() {
           at my projects
         </p>
         <p>And right below here is the button to do that!</p>
-        <button>See Projects</button>
+        <Button>See Projects</Button>
       </aside>
     </Container>
   )
@@ -20,7 +20,18 @@ const Container = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 144px 0;
+  padding: 144px 24px;
+`
+
+const Button = styled.button`
+  padding: 16px 12px;
+  width: 100%;
+  background: #69d7ef;
+  border: 1px transparent;
+  color: black;
+  border-radius: 4px;
+  margin: 0;
+  font-size: 20px;
 `
 
 export default CTASection

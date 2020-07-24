@@ -14,7 +14,7 @@ const Container = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 144px 0 0;
+  padding: 144px 24px 0;
 `
 
 export default PageLayout
