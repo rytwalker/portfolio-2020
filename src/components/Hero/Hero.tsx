@@ -1,59 +1,65 @@
-import { useState } from "react"
 import styled from "styled-components"
-import { animated, useSpring } from "react-spring"
+import { useRouter } from "next/router"
 
 function Hero() {
-  const [toggle, setToggle] = useState(true)
-  const props = useSpring({
-    opacity: toggle ? 1 : 0,
-    x: toggle ? 0 : 20,
-    height: toggle ? 80 : 0,
-    from: { opacity: 0, x: 20, height: 0 }
-  })
+  const router = useRouter()
 
-  function hanldeClick() {
-    setToggle(!toggle)
+  function handleCTAButtonClick() {
+    router.push("/projects")
   }
 
   return (
-    <StyledHero id="hero" onClick={hanldeClick}>
-      <animated.h1
-        style={{
-          transform: props.x.interpolate((x) => `translate3d(0,${x}px,0)`),
-          opacity: props.opacity
-        }}
-      >
-        <animated.span style={{ height: props.height }}>
-          Ryan Walker is a web developer.
-        </animated.span>
-      </animated.h1>
+    <StyledHero id="hero">
+      <HeroTitle>
+        <FirstName>Ryan </FirstName>
+        <LastName>Walker</LastName>
+        <TagLine>is a web developer.</TagLine>
+      </HeroTitle>
+      <CTAButton onClick={handleCTAButtonClick}>View my work</CTAButton>
     </StyledHero>
   )
 }
 
 const StyledHero = styled.header`
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background: #69d7ef;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+`
 
-  div,
-  span {
-    overflow: hidden;
-  }
+const HeroTitle = styled.h1`
+  display: flex;
+  flex-direction: column;
+  font-family: ${({ theme }) => theme.headingFont};
+  margin: 0 0 40px;
+`
+const FirstName = styled.span`
+  font-size: 4.8rem;
+  text-transform: uppercase;
+`
+const LastName = styled.span`
+  font-size: 4.8rem;
+  text-transform: uppercase;
+`
+const TagLine = styled.span`
+  font-size: 1.6rem;
+  align-self: flex-end;
+`
 
-  h1 {
-    height: 80px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 0 24px;
-
-  }
+const CTAButton = styled.button`
+  font-size: 2.4rem;
+  font-weight: 400;
+  font-family: ${({ theme }) => theme.primaryFont};
+  color: ${({ theme }) => theme.colors.white};
+  background: transparent;
+  border: 1px solid ${({ theme }) => theme.colors.white};
+  border-radius: 4px;
+  padding: 16px;
+  width: 240px;
 `
 
 export default Hero

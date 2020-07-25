@@ -4,7 +4,7 @@ function CTASection() {
   return (
     <Container>
       <aside>
-        <h2>So here's the deal.</h2>
+        <h2>Hello, welcome to my portfolio</h2>
         <p>
           This is a mini section where I talk about myself and tell you to look
           at my projects
@@ -19,7 +19,7 @@ function CTASection() {
 const Container = styled.div`
   width: 100%;
   max-width: 800px;
-  margin: 0 auto;
+  margin: -75px auto 0;
   padding: 144px 24px;
 `
 
