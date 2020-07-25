@@ -6,7 +6,7 @@ import { above } from "../../styles/breakpoints"
 import Hamburger from "../Hamburger/Hamburger"
 
 function Nav() {
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(true)
   const props = useSpring({
     opacity: toggle ? 1 : 0,
     x: toggle ? 173 : 0,
@@ -21,21 +21,8 @@ function Nav() {
   return (
     <StyledNav>
       <Hamburger toggle={handleButtonClick} />
-      {/* <ToggleButton
-        style={{
-          transform: props.x.interpolate((x) => `translate3d(${x}px,0,0)`)
-        }}
-        onClick={handleButtonClick}
-      >
-        X
-      </ToggleButton> */}
       {toggle && (
-        <NavList
-          style={{
-            opacity: props.opacity,
-            transform: props.listX.interpolate((x) => `translate3d(${x}px,0,0)`)
-          }}
-        >
+        <NavList>
           <NavItem>
             <Link href="/">
               <NavLink>Home</NavLink>
@@ -63,9 +50,6 @@ function Nav() {
           </NavItem>
         </NavList>
       )}
-      <Logo>
-        <Link href="/">RW</Link>
-      </Logo>
     </StyledNav>
   )
 }
@@ -81,7 +65,7 @@ const StyledNav = styled.nav`
   ${above.md`
     display: flex;
     align-items: center;
-
+    margin: 0 auto;
   `}
 `
 
@@ -101,10 +85,15 @@ const NavList = styled(animated.ul)`
   z-index: 999;
   padding-top: 32px;
   ${above.md`
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     position: relative;
     background: transparent;
     flex-direction: row;
+    justify-content: space-between;
     padding-top: 0;
+    margin: 0 auto;
   `}
 `
 
@@ -115,6 +104,10 @@ const NavItem = styled.li`
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
+  ${above.md`
+    margin-right: 0;
+    padding: 0;
+  `}
 `
 
 const NavLink = styled.a`
